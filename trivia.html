@@ -1,0 +1,242 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<div id="main">
+    <div id="coins"><img src="bitcoin.png" width=30><p id="blits"></p></div>
+    <h1 id="question"></h1>
+    <div id="cards">
+        <button id="card1"></button>
+        <button id="card2"></button>
+        <button id="card3"></button>
+        <button id="card4"></button>
+    </div>
+    </div>
+</body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+        #cards {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+       #cards button {
+           width: 12.5%;
+           border: none;
+           border-radius: 20px;
+           font-family: 'RocknRoll One', sans-serif;
+           color: lightgray;
+           margin-top: 10%;
+           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+           text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+        #card2, #card3, #card4 {
+            margin-left: 10px;
+        }
+        #main {
+            text-align: center;
+            font-family: 'RocknRoll One', sans-serif;
+        }
+        body {
+            background-color: #51992f;
+        }
+        #question {
+            color: lightgray;
+            margin-top: 10%;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+        }
+        #coins {
+            background-color: #e6e6e6;
+            width: 10%;
+            border: 3px solid #ffa703;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+        }
+        #coins img {
+            padding: 2px;
+        }
+        #blits {
+            padding: 0px;
+            line-height: 0px;
+            margin-left: 5%;
+        }
+        @keyframes fadeIn {
+          0% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        .animate {
+            animation: fadeIn 1s;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var buttons = [document.getElementById("card1"), document.getElementById("card2"), document.getElementById("card3"),                       document.getElementById("card4")]
+            var questions = [
+                "What is the most populous country in the world? ",
+                "What is the longest river in the world? ",
+                "What is the capital of Japan? ",
+                "How many countries are there in the world? ",
+                "What is the world's largest desert? ",
+                "What is the world's highest mountain?", 
+                "What is the world's deepest ocean? ",
+                "What is the world's most populous city? ",
+                "What is the world's largest island? ",
+                "What is the official language of Brazil? ",
+                "What is the world's oldest continuously inhabited city? ",
+                "What is the world's longest highway? ",
+                "What is the world's largest lake? ",
+                "What is the world's deepest lake? ",
+                "What is the world's most populous continent? ",
+                "What is the world's longest river? ",
+                "What is the world's highest waterfall? ",
+                "What is the world's most popular religion? ",
+                "What is the world's oldest surviving democracy? ",
+                "What is the world's largest religion? ",
+                "What is the largest country in the world by land area? ",
+                "What is the smallest country in the world by land area? ",
+                "What is the world's largest ocean? ",
+                "What is the world's second largest continent? ",
+                "What is the world's largest hot desert? ",
+                "What is the highest active volcano in the world? ",
+                "What is the capital of Australia? ",
+                "What is the currency of Japan? ",
+                "What is the currency of Brazil? ",
+                "What is the currency of Australia? ",
+                "What is the largest country in South America?",
+               "What is the smallest country in South America?",
+               "What is the largest city in Canada?",
+               "What is the tallest building in the world?",
+               "What is the deepest point on Earth?",
+               "What is the smallest ocean in the world?",
+               "What is the capital of South Korea?",
+               "What is the currency of South Africa?",
+               "What is the currency of Nigeria?",
+               "What is the currency of Mexico?",
+               "What is the currency of Russia?",
+               "What is the highest waterfall in North America?",
+               "What is the highest peak in North America?",
+               "What is the largest lake in Africa?",
+               "What is the largest island in the Mediterranean Sea?",
+               "What is the smallest country in Europe?",
+               "What is the currency of the United Arab Emirates?",
+               "What is the official language of Argentina?",
+               "What is the official language of Mexico?",
+               "What is the official language of Spain?"
+            ]
+            var answers = [
+            ["A. China", "B. India", "C. United States", "D. Indonesia"],
+            ["A. Nile", "B. Amazon", "C. Yangtze", "D. Mississippi"],
+            ["A. Tokyo", "B. Osaka", "C. Yokohama", "D. Kyoto "],
+            ["A. 195", "B. 210", "C. 192", "D. 205"],
+            ["A. Sahara", "B. Gobi", "C. Kalahari", "D. Arabian"],
+            ["A. Mount Everest", "B. Mount Kilimanjaro", "C. Mount Fuji", "D. Mount K2"],
+            ["A. Pacific", "B. Atlantic", "C. Indian", "D. Arctic"],
+            ["A. Tokyo", "B. Shanghai", "C. Delhi", "D. Mumbai"],
+            ["A. Greenland", "B. Madagascar", "C. Borneo", "D. New Guinea"],
+            ["A. Portuguese", "B. Spanish", "C. French", "D. English"],
+            ["A. Damascus", "B. Jerusalem", "C. Athens", "D. Cairo "],
+            ["A. Pan-American", "B. Trans-Canada", "C. Trans-Siberian", "D. Trans-African"],
+            ["A. Caspian Sea", "B. Lake Superior", "C. Lake Victoria", "D. Lake Baikal"],
+            ["A. Caspian Sea", "B. Lake Baikal", "C. Lake Tanganyika", "D. Lake Vostok"],
+            ["A. Asia", "B. Africa", "C. Europe", "D. South America"],
+            ["A. Nile", "B. Amazon", "C. Yangtze", "D. Mississippi"],
+            ["A. Angel Falls", "B. Niagara Falls", "C. Iguazu Falls", "D. Victoria Falls"],
+            ["A. Christianity", "B. Islam", "C. Hinduism", "D. Buddhism"],
+            ["A. United States", "B. France", "C. Greece", "D. India"],
+            ["A. Christianity", "B. Islam", "C. Hinduism", "D. Buddhism"],
+            ["A. Russia", "B. Canada", "C. China", "D. United States"],
+            ["A. Vatican City", "B. Monaco", "C. Nauru", "D. Tuvalu"],
+            ["A. Pacific", "B. Atlantic", "C. Indian", "D. Southern"],
+            ["A. Africa", "B. Asia", "C. North America", "D. Europe"],
+            ["A. Sahara", "B. Arabian", "C. Gobi", "D. Kalahari"],
+            ["A. Cotopaxi", "B. Kilimanjaro", "C. Etna", "D. Mauna Kea"],
+            ["A. Canberra", "B. Sydney", "C. Melbourne", "D. Brisbane"],
+            ["A. Yen", "B. Yuan", "C. Won", "D. Baht"],
+            ["A. Real", "B. Peso", "C. Dollar", "D. Euro"],
+            ["A. Australian dollar", "B. US dollar", "C. Euro", "D. Pound sterling"],
+            ["A. Brazil", "B. Argentina", "C. Colombia", "D. Peru"],
+           ["A. Suriname", "B. Uruguay", "C. Guyana", "D. Ecuador"],
+           ["A. Toronto", "B. Vancouver", "C. Montreal", "D. Ottawa"],
+           ["A. Burj Khalifa", "B. Shanghai Tower", "C. Abraj Al Bait Clock Tower", "D. Ping An Finance Center"],
+           ["A. Challenger Deep", "B. Mariana Trench", "C. Tonga Trench", "D. Kuril-Kamchatka Trench"],
+           ["A. Arctic Ocean", "B. Indian Ocean", "C. Southern Ocean", "D. Pacific Ocean"],
+           ["A. Seoul", "B. Busan", "C. Incheon", "D. Daegu"],
+           ["A. South African rand", "B. South African dollar", "C. South African euro", "D. South African peso"],
+           ["A. Nigerian naira", "B. Nigerian pound", "C. Nigerian yen", "D. Nigerian dollar"],
+           ["A. Mexican peso", "B. Mexican real", "C. Mexican dollar", "D. Mexican euro"],
+           ["A. Russian ruble", "B. Russian dollar", "C. Russian euro", "D. Russian pound"],
+           ["A. Yosemite Falls", "B. Ribbon Fall", "C. Sentinel Falls", "D. Virginia Falls"],
+           ["A. Denali", "B. Mount Logan", "C. Mount Saint Elias", "D. Pico de Orizaba"],
+           ["A. Lake Victoria", "B. Lake Tanganyika", "C. Lake Malawi", "D. Lake Chad"],
+           ["A. Sicily", "B. Sardinia", "C. Corsica", "D. Cyprus"],
+           ["A. Vatican City", "B. Monaco", "C. Liechtenstein", "D. San Marino"],
+           ["A. United Arab Emirates dirham", "B. United Arab Emirates dinar", "C. United Arab Emirates dollar", "D. United Arab Emirates euro"],
+           ["A. Spanish", "B. Portuguese", "C. French", "D. Italian"],
+           ["A. Spanish", "B. English", "C. French", "D. German"],
+           ["A. Spanish", "B. Portuguese", "C. French", "D. Italian"]
+            ]
+            var correctanswers = []
+            for (i=0; i<answers.length; i++) {
+                correctanswers.push(answers[i][0].split(". ")[1])
+            }
+            var past = []
+            var blits = 0
+            var audio1 = new Audio('keep-the-groove-20921.mp3');
+            audio1.play();
+            audio1.addEventListener('ended', function() {
+                this.currentTime = 0;
+                this.play();
+            }, false);
+            document.getElementById("blits").innerText = blits + " Blitcoin"
+            var question = Math.floor(Math.random() * questions.length)
+            shuffle(answers[question])
+            document.getElementById("question").innerText = questions[question]
+            function shuffle(array) {
+              array.sort(() => Math.random() - 0.5);
+            }
+            var colors = ['#d62d20', '#0357e7', '#038744', '#ffa703']
+            shuffle(colors)
+            past.push(question)
+            for (i=0; i<answers.length; i++) {
+                for (j=0; j<answers[0].length; j++) {
+                    answers[i][j] = answers[i][j].split(". ")[1]
+                }
+            }
+            for (i=0; i<buttons.length; i++) {
+                buttons[i].style.height = window.innerWidth * 0.125 + "px"
+                buttons[i].style.backgroundColor = colors[i]
+                buttons[i].innerText = answers[question][i]
+                buttons[i].style.fontSize = ((buttons[i].innerWidth / 1) / buttons[i].innerText.length) + "px"
+                buttons[i].onclick = function() {
+                    submit(this)
+                }
+            }
+            function submit(element) {
+                if (!(past.length > 15)) {
+                    if (correctanswers.includes(element.innerText)) {
+                        blits += 1
+                        document.getElementById("blits").innerText = blits + " Blitcoin"
+                    }
+                    var question = Math.floor(Math.random() * questions.length)
+                    while (past.includes(question)) {
+                        var question = Math.floor(Math.random() * questions.length)
+                    }
+                    past.push(question)
+                    shuffle(answers[question])
+                    shuffle(colors)
+                    document.getElementById("question").innerText = questions[question]
+                    document.getElementById("question").style.fontSize = ((window.innerWidth / 1) / document.getElementById("question").innerText.length) + "px"
+                    for (i=0; i<buttons.length; i++) {
+                        buttons[i].innerText = answers[question][i]
+                        buttons[i].style.backgroundColor = colors[i]
+                        buttons[i].classList.add("animate");
+                        buttons[i].style.fontSize = ((buttons[i].innerWidth / 1) / buttons[i].innerText.length) + "px"
+                    }
+                    document.getElementById("question").classList.add("animate");
+                    setTimeout(() => { document.getElementById("question").classList.remove("animate"); for (i=0; i<buttons.length; i++) { buttons[i].classList.remove("animate");}}, 1000)
+                }
+            }
+        }
+    </script>
+</html>
