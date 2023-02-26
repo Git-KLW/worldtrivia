@@ -119,25 +119,30 @@
             var blob = new Blob([file], { type: "text/plain" });
             var blobUrl = URL.createObjectURL(blob);
             document.getElementById('code').innerText = blobUrl
-            const apiUrl = 'https://api.github.com/repos/git-klw/worldtrivia/contents/' + code + '.txt';
-            document.getElementById('code').innerText = " "
-            const token = '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';
+            const blobContent = "Hello, World!";
+            const fileName = "hello.txt";
+            const repoOwner = "Git-KLW";
+            const repoName = "worldtrivia";
+            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${fileName}`;
+            const token = "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";
 
-            fetch(apiUrl, {
-              method: 'PUT',
+            const requestOptions = {
+              method: "POST",
               headers: {
-                Authorization: `token ${token}`,
-                'Content-Type': 'application/json'
+                "Authorization": `token ${token}`,
+                "Content-Type": "application/json"
               },
               body: JSON.stringify({
-                message: 'Add example.txt',
-                content: btoa(file),
-                path: 'example.txt',
+                message: "Add file",
+                content: btoa(blobContent),
+                path: fileName
               })
-            })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
+            };
+
+            fetch(apiUrl, requestOptions)
+              .then(response => response.json())
+              .then(data => console.log(data))
+              .catch(error => console.log(error));
         }
         window.onload = function() {
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
