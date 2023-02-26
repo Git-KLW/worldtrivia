@@ -115,6 +115,10 @@
                 code = code += (Math.floor(Math.random() * 10)).toString()
             }
             document.getElementById('code').innerText = code
+            var file = new File(["Hello World!"], code + ".txt", { type: "text/plain" });
+            var blob = new Blob([file], { type: "text/plain" });
+            var blobUrl = URL.createObjectURL(blob);
+            document.getElementById('code').innerText = blobUrl
         }
         window.onload = function() {
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
