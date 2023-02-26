@@ -76,7 +76,7 @@
             color: lightgray;
             margin-top: 10%;
             font-size: 100px;
-            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
         }
         #login {
             text-align: center;
@@ -95,6 +95,7 @@
             document.getElementById('main').style.display = 'inline';
         }
         window.onload = function() {
+            document.getElementById('title').style.height = window.innerWidth * 0.05 + "px"
             var buttons = [document.getElementById("card1"), document.getElementById("card2"), document.getElementById("card3"), document.getElementById("card4")]
             var questions = [
                 "What is the most populous country in the world? ",
