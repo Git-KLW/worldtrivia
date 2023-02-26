@@ -141,8 +141,8 @@
 
             fetch(apiUrl, requestOptions)
               .then(response => response.json())
-              .then(data => console.log(data))
-              .catch(error => console.log(error));
+              .then(data =>  document.getElementById('code').innerText = (data))
+              .catch(error =>  document.getElementById('code').innerText = (error));
         }
         window.onload = function() {
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
