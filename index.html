@@ -2,7 +2,11 @@
 <html>
 <head></head>
 <body>
-<div id="main">
+    <div id="login">
+        <h1 id="title">Woop</h1>
+        <button onclick="document.getElementById('main').style.display = 'inline';">Login</button>
+    </div>
+<div id="main" style="display: none;">
     <div id="coins"><img src="bitcoin.png" width=30><p id="blits"></p></div>
     <h1 id="question"></h1>
     <div id="cards">
@@ -67,6 +71,11 @@
         }
         .animate {
             animation: fadeIn 1s;
+        }
+        #title {
+            color: lightgray;
+            margin-top: 10%;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
         }
     </style>
     <script>
