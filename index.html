@@ -119,32 +119,9 @@
             var blob = new Blob([file], { type: "text/plain" });
             var blobUrl = URL.createObjectURL(blob);
             document.getElementById('code').innerText = blobUrl
-            const blobContent = "Hello, World!";
-            const fileName = "hello.txt";
-            const repoOwner = "Git-KLW";
-            const repoName = "worldtrivia";
-            const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${fileName}`;
-            const token = "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";
-
-            const requestOptions = {
-              method: "POST",
-              headers: {
-                "Authorization": `token ${token}`,
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                message: "Add file",
-                content: btoa(blobContent),
-                path: fileName
-              })
-            };
-
-            fetch(apiUrl, requestOptions)
-              .then(response => response.json())
-              .then(data =>  console.log(data))
-              .catch(error =>  console.log(error));
         }
         window.onload = function() {
+            login()
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
             document.getElementById('code').style.height = window.innerWidth * 0.05 + "px"
             var buttons = [document.getElementById("card1"), document.getElementById("card2"), document.getElementById("card3"), document.getElementById("card4")]
