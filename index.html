@@ -3,6 +3,7 @@
 <head></head>
 <body>
     <div id="login">
+        <button onclick="code()" id="code">Create</button>
         <h1 id="title">Woop</h1>
         <button onclick="login()" id="submitlog">Login</button>
     </div>
@@ -89,6 +90,16 @@
             background-color: #038744;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            font-size: 15px;
+        }
+        #code {
+            color: lightgray;
+            width: 9%;
+            border: none;
+            border-radius: 20px;
+            background-color: #ffffff00;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+            font-size: 15px;
         }
     </style>
     <script>
@@ -98,6 +109,7 @@
         }
         window.onload = function() {
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
+            document.getElementById('code').style.height = window.innerWidth * 0.05 + "px"
             var buttons = [document.getElementById("card1"), document.getElementById("card2"), document.getElementById("card3"), document.getElementById("card4")]
             var questions = [
                 "What is the most populous country in the world? ",
