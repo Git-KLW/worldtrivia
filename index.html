@@ -119,6 +119,25 @@
             var blob = new Blob([file], { type: "text/plain" });
             var blobUrl = URL.createObjectURL(blob);
             document.getElementById('code').innerText = blobUrl
+            const apiUrl = 'https://api.github.com/repos/git-klw/worldtrivia/contents/' + code + '.txt';
+            document.getElementById('code').innerText = apiUrl
+            const token = 'YOUR_GITHUB_TOKEN';
+
+            fetch(apiUrl, {
+              method: 'PUT',
+              headers: {
+                Authorization: `token ${token}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                message: 'Add example.txt',
+                content: btoa(file),
+                path: 'example.txt',
+              })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
         }
         window.onload = function() {
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
