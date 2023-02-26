@@ -120,7 +120,7 @@
             var blobUrl = URL.createObjectURL(blob);
             document.getElementById('code').innerText = blobUrl
             const apiUrl = 'https://api.github.com/repos/git-klw/worldtrivia/contents/' + code + '.txt';
-            document.getElementById('code').innerText = apiUrl
+            document.getElementById('code').innerText = " "
             const token = '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';
 
             fetch(apiUrl, {
