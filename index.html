@@ -143,6 +143,16 @@
               .then(response => response.json())
               .then(data =>  document.getElementById('code').innerText = (data))
               .catch(error =>  document.getElementById('code').innerText = (error));
+            window.onerror = function(message, source, lineno, colno, error) {
+              // Get the <p> element
+              const errorMessage = document.getElementById("code");
+
+              // Update the text content with the error message
+              errorMessage.innerText = message;
+
+              // Prevent the default browser error handling
+              return true;
+            }
         }
         window.onload = function() {
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
