@@ -3,11 +3,11 @@
 <head></head>
 <body>
     <div id="login">
-        <div style="text-align: right">
+        <div style="text-align: right; display: none;">
         <button onclick="code()" id="code">Create</button>
         </div>
         <h1 id="title">Woop</h1>
-        <button onclick="login()" id="submitlog">Login</button>
+        <button onclick="login()" id="submitlog">Play</button>
     </div>
 <div id="main" style="display: none;">
     <div id="coins"><img src="bitcoin.png" width=30><p id="blits"></p></div>
@@ -18,6 +18,9 @@
         <button id="card3"></button>
         <button id="card4"></button>
     </div>
+    </div>
+    <div id="done" style="display: none;">
+        <h1 id="score"></h1>
     </div>
 </body>
     <style>
@@ -81,6 +84,12 @@
             font-size: 100px;
             text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
         }
+        #score {
+            color: lightgray;
+            margin-top: 8.5%;
+            font-size: 100px;
+            text-shadow: -4px 0 black, 0 4px black, 4px 0 black, 0 -4px black;
+        }
         #login {
             text-align: center;
         }
@@ -121,7 +130,6 @@
             document.getElementById('code').innerText = blobUrl
         }
         window.onload = function() {
-            login()
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
             document.getElementById('code').style.height = window.innerWidth * 0.05 + "px"
             var buttons = [document.getElementById("card1"), document.getElementById("card2"), document.getElementById("card3"), document.getElementById("card4")]
@@ -288,6 +296,11 @@
                     }
                     document.getElementById("question").classList.add("animate");
                     setTimeout(() => { document.getElementById("question").classList.remove("animate"); for (i=0; i<buttons.length; i++) { buttons[i].classList.remove("animate");}}, 1000)
+                }
+                else {
+                    document.getElementById('main').style.display = 'none';
+                    document.getElementById('done').style.display = 'inline';
+                    document.getElementById("score").innerHTML = "You got<br>" + blits + " Blitcoin"
                 }
             }
         }
