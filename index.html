@@ -130,6 +130,7 @@
             document.getElementById('code').innerText = blobUrl
         }
         window.onload = function() {
+            var audio1 = new Audio('keep-the-groove-20921.mp3');
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
             document.getElementById('code').style.height = window.innerWidth * 0.05 + "px"
             var buttons = [document.getElementById("card1"), document.getElementById("card2"), document.getElementById("card3"), document.getElementById("card4")]
@@ -243,7 +244,6 @@
             }
             var past = []
             var blits = 0
-            var audio1 = new Audio('keep-the-groove-20921.mp3');
             audio1.play();
             audio1.addEventListener('ended', function() {
                 this.currentTime = 0;
@@ -298,6 +298,9 @@
                     setTimeout(() => { document.getElementById("question").classList.remove("animate"); for (i=0; i<buttons.length; i++) { buttons[i].classList.remove("animate");}}, 1000)
                 }
                 else {
+                    audio1.pause()
+                    var drum = new Audio('drum-roll-please-6921.mp3');
+                    drum.play()
                     document.getElementById('main').style.display = 'none';
                     document.getElementById('done').style.display = 'inline';
                     document.getElementById("score").innerHTML = "You got<br>" + blits + " Blitcoin"
