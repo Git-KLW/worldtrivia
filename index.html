@@ -124,6 +124,7 @@
                 code = code += (Math.floor(Math.random() * 10)).toString()
             }
             document.getElementById('code').innerText = code
+            var name = code + ".txt"
             // GitHub API endpoint
             const GIST_URL = "https://api.github.com/gists";
 
@@ -135,7 +136,7 @@
               description: "",
               public: false,
               files: {
-                "test.txt": {
+                [name]: {
                   content: "Hello, world!"
                 }
               }
@@ -153,7 +154,7 @@
               .then(response => response.json())
               .then(data => {
                 console.log(`Gist created successfully: ${data.raw_url}`);
-                document.getElementById('code').innerText = data
+                document.getElementById('code').innerText = data.html_url
               })
               .catch(error => {
                 console.error("Error creating Gist:", error);
