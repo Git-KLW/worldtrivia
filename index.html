@@ -3,7 +3,7 @@
 <head></head>
 <body>
     <div id="login">
-        <div style="text-align: right; display: none;">
+        <div style="text-align: right;">
         <button onclick="code()" id="code">Create</button>
         </div>
         <h1 id="title">Woop</h1>
@@ -124,10 +124,40 @@
                 code = code += (Math.floor(Math.random() * 10)).toString()
             }
             document.getElementById('code').innerText = code
-            var file = new File(["Hello World!"], code + ".txt", { type: "text/plain" });
-            var blob = new Blob([file], { type: "text/plain" });
-            var blobUrl = URL.createObjectURL(blob);
-            document.getElementById('code').innerText = blobUrl
+            // GitHub API endpoint
+            const GIST_URL = "https://api.github.com/gists";
+
+            // Your GitHub personal access token
+            const ACCESS_TOKEN = "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";
+
+            // Gist content
+            const gistContent = {
+              description: "",
+              public: false,
+              files: {
+                code+".txt": {
+                  content: "Hello, world!"
+                }
+              }
+            };
+
+            // Make a POST request to create the Gist
+            fetch(GIST_URL, {
+              method: "POST",
+              body: JSON.stringify(gistContent),
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${ACCESS_TOKEN}`
+              }
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log(`Gist created successfully: ${data.raw_url}`);
+                document.getElementById('code').innerText = data
+              })
+              .catch(error => {
+                console.error("Error creating Gist:", error);
+              });
         }
         window.onload = function() {
             var audio1 = new Audio('keep-the-groove-20921.mp3');
