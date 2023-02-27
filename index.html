@@ -302,8 +302,10 @@
                     var drum = new Audio('drum-roll-please-6921.mp3');
                     drum.play()
                     document.getElementById('main').style.display = 'none';
+                    setTimeout(() => {
                     document.getElementById('done').style.display = 'inline';
                     document.getElementById("score").innerHTML = "You got<br>" + blits + " Blitcoin"
+                    }, 6000)
                 }
             }
         }
