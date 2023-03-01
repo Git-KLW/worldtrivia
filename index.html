@@ -129,7 +129,7 @@
             const GIST_URL = "https://api.github.com/gists";
 
             // Your GitHub personal access token
-            const ACCESS_TOKEN = process.env.PAT_KEY;
+            const ACCESS_TOKEN = '';
 
             // Gist content
             const gistContent = {
@@ -161,6 +161,7 @@
               });
         }
         window.onload = function() {
+            document.getElementById("title").click()
             var audio1 = new Audio('keep-the-groove-20921.mp3');
             document.getElementById('submitlog').style.height = window.innerWidth * 0.04 + "px"
             document.getElementById('code').style.height = window.innerWidth * 0.05 + "px"
