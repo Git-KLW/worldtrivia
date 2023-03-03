@@ -119,6 +119,10 @@
             document.getElementById('main').style.display = 'inline';
         }
         function code() {
+            function decodeApiKey(encodedApiKey) {
+              const decoded = atob(encodedApiKey);
+              return decoded;
+            }
             var code = ''
             for (i=0; i<8; i++) {
                 code = code += (Math.floor(Math.random() * 10)).toString()
@@ -129,14 +133,14 @@
             const GIST_URL = "https://api.github.com/gists";
 
             // Your GitHub personal access token
-            const ACCESS_TOKEN = process.env.token;
+            const ACCESS_TOKEN = decodeApiKey("Z2hwX2dwdmdDTUJDZU43aTBIZzh0SHB2b2Z2M1pwOEN4SDFMUTlNUw==");
 
             // Gist content
             const gistContent = {
               description: "",
               public: false,
               files: {
-                "hello.txt": {
+                "newfile.txt": {
                   content: "Hello, world!"
                 }
               }
